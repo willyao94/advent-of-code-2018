@@ -22,8 +22,8 @@ fn main() {
     let mut claims = HashMap::new();
     let mut key_mapping = HashMap::new();
 
+    let re = Regex::new(r"#(\d+).*\s(\d+),(\d+):\s(\d+)x(\d+)").unwrap();
     for line in file.lines() {
-        let re = Regex::new(r"#(\d+).*\s(\d+),(\d+):\s(\d+)x(\d+)").unwrap();
         for cap in re.captures_iter(&line.unwrap()) {
             let parse: Vec<i32> = vec![&cap[1], &cap[2], &cap[3], &cap[4], &cap[5]]
                                     .into_iter()
